@@ -1,6 +1,10 @@
 {
-  "name": "App",
-  "version": "1.0.0",
+  "scripts": {
+    "start": "live-server --open=./"
+  },
+  "name": "app-summary",
+  "version": "0.0.1",
+  "description": "app-summary",
   "main": "index.js",
   "author": "EddieMa <machaoxue@yeah.net>",
   "license": "MIT"
