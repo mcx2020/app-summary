@@ -1,0 +1,21 @@
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+.waterfall{
+	background: #DDD;
+	width:1200px;
+	margin:0 auto;
+}
+.waterfall-item {
+	border:1px solid red;
+	width: 20%;
+	height:200px;
+}
+.grid-item--width2 {
+	width: 120px; 
+}
+.grid-item--width3 {
+	width: 150px; 
+}
