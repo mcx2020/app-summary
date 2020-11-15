@@ -1,5 +1,6 @@
-var elem = document.querySelector('.waterfall')
-new Masonry( elem, {
+var $grid = $('.waterfall').masonry({
   itemSelector: '.waterfall-item',
-  columnWidth: 200
+});
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry();
 });

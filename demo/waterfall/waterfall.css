@@ -1,21 +1,33 @@
-*{
-	box-sizing:border-box;
+* {
+	box-sizing: border-box;
 	margin:0;
 	padding:0;
 }
+
 .waterfall{
-	background: #DDD;
-	width:1200px;
-	margin:0 auto;
+	overflow: hidden;
 }
-.waterfall-item {
-	border:1px solid red;
+
+.waterfall .waterfall-item {
 	width: 20%;
-	height:200px;
+	float: left;
+	padding:4px;
+	overflow:hidden;
 }
-.grid-item--width2 {
-	width: 120px; 
+@media(max-width: 1000px){
+	.waterfall .waterfall-item{
+		width:25%;
+	}
 }
-.grid-item--width3 {
-	width: 150px; 
+@media(max-width: 500px){
+	.waterfall .waterfall-item{
+		width:33.33%;
+	}
+}
+
+.waterfall .waterfall-item img {
+	border:1px solid #eee;
+	display: block;
+	width:100%;
+	height:auto;
 }
