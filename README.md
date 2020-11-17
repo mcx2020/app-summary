@@ -6,7 +6,7 @@ Some effects of them are same,but the actual methods are different. I think they
 
 Now There are *4* demos which could be read.
 
-* [barrel-jquery](https://mcx2020.github.io/app-summary/demo/barrel-jquery/barrel.html)
-* [barrel-vanilla](https://mcx2020.github.io/app-summary/demo/barrel-vanilla/barrel.html)
-* [count-down-jquery](https://mcx2020.github.io/app-summary/demo/count-down-jquery/count-down.html)
-* [waterfall](https://mcx2020.github.io/app-summary/demo/waterfall/waterfall.html)
+* [barrel-jquery](https://mcx2020.github.io/app-summary/demos/barrel-jquery/barrel.html)
+* [barrel-vanilla](https://mcx2020.github.io/app-summary/demos/barrel-vanilla/barrel.html)
+* [count-down-jquery](https://mcx2020.github.io/app-summary/demos/count-down-jquery/count-down.html)
+* [waterfall](https://mcx2020.github.io/app-summary/demos/waterfall/waterfall.html)
