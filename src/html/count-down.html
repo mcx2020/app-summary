@@ -4,7 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Count Down</title>
-	<link rel="stylesheet" href="../css/count-down.css">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+		}
+		.count-down{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		.count-down .count-down-h{
+			width:1.3em;
+		}
+		.count-down .count-down-m{
+			width:1.3em;
+		}
+		.count-down .count-down-s{
+			width:1.3em;
+		}
+		.count-down .count-down-ms{
+			width:1.9em;
+		}
+	</style>
 </head>
 <body>
 <h1 style="text-align: center;">倒计时</h1>
@@ -17,8 +41,43 @@
 </div>
 </body>
 <script src="../libs/jquery.min.js"></script>
-<script src="../js/count-down.js"></script>
 <script>
+	// 手写倒计时
+	class CountDown{
+		constructor(options) {
+			options = options || {}
+			this.leftTime=options.leftTime-1 || 86400-1
+			this.selectorH=options.selectorH || ".count-down-h"
+			this.selectorM=options.selectorM || ".count-down-m"
+			this.selectorD=options.selectorD || ".count-down-d"
+			this.selectorS=options.selectorS || ".count-down-s"
+			this.selectorMs=options.selectorMs || ".count-down-ms"
+			this.fn=options.fn
+			this.ms = 999
+			this.speed=33
+			this.countDown()
+		}
+		countDown(){
+			let countTimer = setInterval(()=>{
+				this.ms -=this.speed
+				if (this.ms<this.speed) {
+					this.ms = 999
+					this.leftTime--
+				}else{
+					$(this.selectorD).html(Math.floor(this.leftTime/86400))
+					$(this.selectorH).html(Math.floor(this.leftTime%86400/3600))
+					$(this.selectorM).html(Math.floor(this.leftTime%3600/60))
+					$(this.selectorS).html(Math.floor(this.leftTime%60))
+					$(this.selectorMs).html(this.ms)
+				}
+				if(this.leftTime<=0){
+					$(this.selectorMs).html('000');
+					clearInterval(countTimer);
+					if(this.fn instanceof Function) this.fn()
+				}
+			}, this.speed)
+		}
+	}
 	new CountDown()
 </script>
 </html>

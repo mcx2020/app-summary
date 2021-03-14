@@ -4,7 +4,41 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Waterfall</title>
-	<link rel="stylesheet" href="../css/waterfall.css">
+	<style>
+		* {
+			box-sizing: border-box;
+			margin:0;
+			padding:0;
+		}
+
+		.waterfall{
+			overflow: hidden;
+		}
+
+		.waterfall .waterfall-item {
+			width: 20%;
+			float: left;
+			padding:4px;
+			overflow:hidden;
+		}
+		@media(max-width: 1000px){
+			.waterfall .waterfall-item{
+				width:25%;
+			}
+		}
+		@media(max-width: 500px){
+			.waterfall .waterfall-item{
+				width:33.33%;
+			}
+		}
+
+		.waterfall .waterfall-item img {
+			border:1px solid #eee;
+			display: block;
+			width:100%;
+			height:auto;
+		}
+	</style>
 </head>
 <body>
 <h1	style="text-align: center;">瀑布流布局</h1>
@@ -42,11 +76,17 @@
 		<div class="waterfall-item"><img src="../assets/images/15.jpg" alt=""></div>
 	</div>
 </div>
-
 </body>
 <script src="../libs/jquery.min.js"></script>
 <script src="../libs/masonry.pkgd.min.js"></script>
 <script src="../libs/imagesloaded.pkgd.min.js"></script>
-<script src="../js/waterfall.js"></script>
+<script>
+	var $grid = $('.waterfall').masonry({
+		itemSelector: '.waterfall-item',
+	});
+	$grid.imagesLoaded().progress(function(){
+		$grid.masonry();
+	});
+</script>
 
 </html>

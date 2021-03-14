@@ -4,7 +4,29 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Barrel</title>
-	<link rel="stylesheet" href="../css/barrel-jquery.css">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+		}
+		.barrel {
+			overflow: hidden;
+		}
+		.barrel .barrel-item {
+			float: left;
+			margin: 4px;
+			border: 1px solid #eee;
+			box-sizing: content-box;
+			overflow: hidden;
+			position: relative;
+		}
+		.barrel .barrel-item img {
+			display: block;
+			width: auto;
+			height: 100%;
+		}
+	</style>
 </head>
 <body>
 	<h1 style="text-align: center;">木桶布局</h1>
@@ -45,5 +67,10 @@
 </body>
 <script src="../libs/jquery.min.js"></script>
 <script src="../libs/jquery.flex-images.min.js"></script>
-<script src="../js/barrel-jquery.js"></script>
+<script>
+	$('.barrel').flexImages({
+		container:'.barrel-item',
+		rowHeight: 200
+	});
+</script>
 </html>
