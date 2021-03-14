@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>History Works</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .history-works-preview{
+            width:300px;
+            border-radius: 4px;
+            box-shadow: 0 8px 15px rgba(47, 63, 95, 0.1);
+            position:relative;
+        }
+        .history-works-preview .title-wrapper{
+            display:flex;
+            justify-content: flex-start;
+            align-content: center;
+        }
+        .history-works-preview .title-wrapper .img-title,
+        .history-works-preview .title-wrapper .video-title{
+            cursor: pointer;
+            padding:18px 15px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:50px;
+            font-size:14px;
+            color: rgba(23, 23, 24, 0.8);
+            position: relative;
+        }
+        .history-works-preview .title-wrapper .img-title.active,
+        .history-works-preview .title-wrapper .video-title.active{
+            color: #0057FF;
+        }
+        .history-works-preview .title-wrapper .img-title.active::after,
+        .history-works-preview .title-wrapper .video-title.active::after{
+            content: '';
+            position: absolute;
+            bottom:0;
+            width:24px;
+            height:2px;
+            background:#0057FF;
+        }
+        .history-works-preview .outer-frame{
+            padding-left:10px;
+            height:270px;
+            position:relative;
+            overflow:auto;
+        }
+        .history-works-preview .outer-frame:hover{
+            overflow:auto;
+        }
+        .history-works-preview .outer-frame::-webkit-scrollbar{
+            width: 6px;
+            height: 6px;
+        }
+        .history-works-preview .outer-frame::-webkit-scrollbar-thumb{
+            background: rgb(192,192,192);
+            border-radius: 5px;
+        }
+        .history-works-preview .scroll-bar-shelter{
+            position: absolute;
+            top:0;
+            right:0;
+            height:100%;
+            width:6px;
+            background: #FFF;
+        }
+        .history-works-preview .item-wrapper{
+            width:280px;
+            overflow: hidden;
+            height:500px;
+            position:relative;
+        }
+        .history-works-preview .item-wrapper.video{
+            display:none;
+        }
+        .history-works-preview .item-wrapper .item {
+            width: 50%;
+            position:absolute;
+            top:0;
+            left:0;
+            padding:5px;
+            overflow:hidden;
+            cursor:pointer;
+        }
+        .history-works-preview .item-wrapper .item .item-shade{
+            position:absolute;
+            top:6px;
+            right:6px;
+            bottom:6px;
+            left:6px;
+            background: rgba(0,0,0,0.6);
+            display:none;
+        }
+        .history-works-preview .item-wrapper .item:hover .item-shade{
+            display:block;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button{
+            display:block;
+            position: absolute;
+            top:8px;
+            right:8px;
+            width:30px;
+            height:30px;
+            border-radius:4px;
+            background: #FFF;
+            overflow:hidden;
+            padding:6px;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button img{
+            vertical-align: top;
+            width:100%;
+            height:100%;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button:hover img:first-child{
+            display:none;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button img:nth-child(2){
+            display:none;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button:hover img:nth-child(2){
+            display:block;
+        }
+        .history-works-preview .item-wrapper .item .item-shade .button:hover{
+
+        }
+        .history-works-preview .item-wrapper .item > img {
+            border:1px solid #eee;
+            display: block;
+            width:100%;
+            height:auto;
+        }
+        .history-works-preview .see-all{
+            text-decoration:none;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size:14px;
+            height:40px;
+            color:#171718;
+            cursor:pointer;
+            border-top:1px solid rgb(244,244,244)
+        }
+        .history-works-preview .see-all.video{
+            display:none;
+        }
+        .history-works-preview .see-all:hover{
+            color:#0057FF;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <img src="//js.tusij.com/album-vd/165af05b1d798ce57b6e8cac0bcefe26.jpg" alt="">
+    <img style="display:none" src="//js.tusij.com/album-vd/47b64cffe55122bcf2b0b61519d4487d.jpg" alt="">
+    <div class="history-works-preview">
+        <div class="title-wrapper">
+            <div class="img-title active">图片</div>
+            <div class="video-title">视频</div>
+        </div>
+        <div class="outer-frame">
+            <div class="item-wrapper img">
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/3.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/4.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/5.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/6.jpg" alt="">
+                </div>
+            </div>
+            <div class="item-wrapper video">
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/4.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/5.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/6.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <a class="item-shade" href="javascript:console.log('点击了a标签')">
+                        <div class="button">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit1.png" alt="">
+                            <img src="//js.tusij.com/custom/img/common/icon_edit2.png" alt="">
+                        </div>
+                    </a>
+                    <img src="../assets/images/3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-bar-shelter"></div>
+        <a href="//www.tusij.com/imageeditor.html" class="see-all img">查看全部</a>
+        <a href="//www.tusij.com/imageeditor.html?type=vd" class="see-all video">查看全部</a>
+    </div>
+</main>
+<script src="../libs/jquery.min.js"></script>
+<script>
+    function myDesignHistory(){
+        function debounce(fn,delay){
+            var timeout
+            return function(){
+                if(timeout){
+                    clearTimeout(timeout)
+                }
+                timeout = setTimeout(fn,delay)
+            }
+        }
+        function Waterfall ($itemWrapper,$item){
+            var _this = this
+            this.$itemWrapper = $itemWrapper
+            this.$item = $item
+            this.columnHeightList =[]
+            for(var i=0;i<this.getColumnCount();i++){
+                this.columnHeightList[i] = 0
+            }
+            function setItem(){
+                $item.each(function(){
+                    var i = _this.getMinHeightColumnIndex()
+                    var left = $(this).outerWidth() * i
+                    var top = _this.columnHeightList[i]
+                    $(this).css({
+                        position:'absolute',
+                        left,
+                        top
+                    })
+                    _this.columnHeightList[i] += $(this).outerHeight()
+                    var maxHeight = _this.getMaxHeightColumn()
+                    $itemWrapper.height(maxHeight)
+                })
+            }
+            setTimeout(setItem)
+        }
+        Waterfall.prototype = {
+            getColumnCount(){
+                return Math.floor(this.$itemWrapper.width() / this.$item.outerWidth())
+            },
+            getMinHeightColumnIndex(){
+                var minHeightIndex = 0
+                var list = this.columnHeightList
+                for(var i=1;i<list.length;i++){
+                    if(list[i]<list[minHeightIndex]){
+                        minHeightIndex = i
+                    }
+                }
+                return minHeightIndex
+            },
+            getMaxHeightColumn(){
+                var list = this.columnHeightList
+                var number = list[0]
+                for(var i=1;i<list.length;i++){
+                    if(list[i]>number){
+                        number = list[i]
+                    }
+                }
+                return number
+            },
+            getItemHeightList(){
+                var list = []
+                console.log($item)
+                $item.each(function(){
+                    list.push($(this).outerHeight())
+                })
+                return list
+            },
+
+        }
+        function loadImgSource(){
+            var $itemWrapper = $('.history-works-preview .item-wrapper').first()
+            var $item = $itemWrapper.children('.item')
+            new Waterfall($itemWrapper,$item)
+        }
+        function loadVideoSource(){
+            var $itemWrapper = $('.history-works-preview .item-wrapper.video')
+            var $item = $itemWrapper.children('.item')
+            new Waterfall($itemWrapper,$item)
+        }
+        function addTitleClickEvent(){
+            $('body').on('click',function(){
+                console.log('body被点击了')
+            })
+            $('.history-works-preview .img-title,.history-works-preview .video-title').on('click',function(){
+                if($(this).hasClass('active')) return
+                $(this).addClass('active')
+                $(this).siblings().removeClass('active')
+                if($(this).hasClass('img-title')){
+                    $('.history-works-preview .see-all.img').css({display:'flex'})
+                    $('.history-works-preview .see-all.video').css({display:'none'})
+                    $('.item-wrapper.img').css({display:'block'})
+                        .siblings().css({display:'none'})
+                }else if($(this).hasClass('video-title')){
+                    $('.history-works-preview .see-all.img').css({display:'none'})
+                    $('.history-works-preview .see-all.video').css({display:'flex'})
+                    $('.item-wrapper.video').css({display:'block'})
+                        .siblings().css({display:'none'})
+                    loadVideoSource()
+                }
+            })
+        }
+        function addItemScrollEvent(){
+            var hiddenScrollBar = debounce(function(){
+                $('.history-works-preview .scroll-bar-shelter').fadeIn()
+            },500)
+            $('.history-works-preview .outer-frame').scroll(function(){
+                $('.history-works-preview .scroll-bar-shelter').fadeOut()
+                hiddenScrollBar()
+            })
+        }
+        loadImgSource()
+        addTitleClickEvent()
+        addItemScrollEvent()
+    }
+    myDesignHistory()
+</script>
+</body>
+</html>
