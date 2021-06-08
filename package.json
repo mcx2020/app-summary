@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "live-server --open=./src",
+    "start": "live-server ./src/pages",
     "push": "bash push.sh"
   },
   "name": "app-summary",

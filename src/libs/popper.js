@@ -91,10 +91,10 @@ function getDocumentElement(element) {
 }
 
 function getWindowScrollBarX(element) {
-  // If <html> has a CSS width greater than the viewport, then this will be
+  // If <pages> has a CSS width greater than the viewport, then this will be
   // incorrect for RTL.
   // Popper 1 is broken in this case and never had a bug report so let's assume
-  // it's not an issue. I don't think anyone ever specifies width on <html>
+  // it's not an issue. I don't think anyone ever specifies width on <pages>
   // anyway.
   // Browsers where the left scrollbar doesn't cause an issue report `0` for
   // this (e.g. Edge 2019, IE11, Safari)
@@ -200,7 +200,7 @@ function getScrollParent(node) {
 /*
 given a DOM element, return the list of all scroll parents, up the list of ancesors
 until we get to the top window object. This list is what we attach scroll listeners
-to, because if any of these parent elements scroll, we'll need to re-calculate the 
+to, because if any of these parent elements scroll, we'll need to re-calculate the
 reference element's position.
 */
 
@@ -493,7 +493,7 @@ function getViewportRect(element) {
   var x = 0;
   var y = 0; // NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
   // can be obscured underneath it.
-  // Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+  // Also, `pages.clientHeight` adds the bottom bar height in Safari iOS, even
   // if it isn't open, so if this isn't available, the popper will be detected
   // to overflow the bottom of the screen too early.
 
@@ -522,7 +522,7 @@ function getViewportRect(element) {
   };
 }
 
-// of the `<html>` and `<body>` rect bounds if horizontally scrollable
+// of the `<pages>` and `<body>` rect bounds if horizontally scrollable
 
 function getDocumentRect(element) {
   var html = getDocumentElement(element);

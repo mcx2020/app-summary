@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cutout Show</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .cutout-wrapper{
+            width:800px;
+            margin:0 auto;
+            height:auto;
+            position:relative;
+            user-select: none;
+            cursor:pointer;
+        }
+        .cutout-wrapper .original-img-wrapper{
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            width:50%;
+            overflow: hidden;
+        }
+        .cutout-wrapper .img-wrapper > img,
+        .cutout-wrapper .original-img-wrapper > img{
+            vertical-align: top;
+            pointer-events: none;
+            display:block;
+        }
+        .cutout-wrapper .img-wrapper >img{
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3LjkzNyA3LjkzOCIgaGVpZ2h0PSIzMCIgd2lkdGg9IjMwIj48cGF0aCBwYWludC1vcmRlcj0ic3Ryb2tlIGZpbGwgbWFya2VycyIgZD0iTS4wMTQuMDE0SDMuOTdWMy45N0guMDE0ek0zLjk3IDMuOTY4aDMuOTU0djMuOTU1SDMuOTd6IiBmaWxsPSIjZWVlZmYwIi8+PC9zdmc+);
+        }
+        .cutout-wrapper .cutout-drag{
+            cursor: ew-resize;
+            left: 50%;
+            position: absolute;
+            top: 0;
+            bottom:0;
+            width: 2px;
+            background: #FFF;
+            user-select: none;
+            cursor: ew-resize;
+        }
+        .cutout-wrapper .cutout-drag .circle{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            border:2px solid #FFF;
+            background: rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="cutout-wrapper">
+    <div class="img-wrapper">
+        <div class="original-img-wrapper">
+            <img src="/src/assets/images/img_color.jpg" alt="">
+        </div>
+        <img src="/src/assets/images/img_bg.png" alt="">
+    </div>
+    <div class="cutout-drag">
+        <div class="circle"></div>
+    </div>
+
+</div>
+<script src="../libs/jquery.min.js"></script>
+<script>
+    function addCutoutEvent(){
+        let mouseDown = false
+        const $cutoutWrapper = $('.cutout-wrapper')
+        const width = $cutoutWrapper.width()
+        $cutoutWrapper.on('mousedown',function(e){
+            mouseDown = true
+            let offsetX = e.clientX - $cutoutWrapper.offset().left
+            if(offsetX<=0){
+                offsetX = 0
+            }else if(offsetX>width){
+                offsetX = width
+            }
+            $cutoutWrapper.find('.cutout-drag').css({
+                left: offsetX/width*100 + '%'
+            })
+            $cutoutWrapper.find('.original-img-wrapper').css({
+                width:offsetX/width*100 + '%'
+            })
+        })
+        $(document).on('mousemove',function(e){
+            if(!mouseDown) return
+            console.log(e.clientX)
+            let offsetX = e.clientX - $cutoutWrapper.offset().left
+            if(offsetX<=0){
+                offsetX = 0
+            }else if(offsetX>width){
+                offsetX = width
+            }
+            $cutoutWrapper.find('.cutout-drag').css({
+                left: offsetX/width*100 + '%'
+            })
+            $cutoutWrapper.find('.original-img-wrapper').css({
+                width:offsetX/width*100 + '%'
+            })
+        })
+        $(window).on('mouseup',function(){
+            mouseDown = false
+        })
+    }
+    addCutoutEvent()
+</script>
+</body>
+</html>

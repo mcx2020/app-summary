@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Waterfall</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .waterfall-wrapper{
+            width:1200px;
+            margin:40px auto;
+        }
+        .waterfall-wrapper .item{
+            width:300px;
+            padding:10px;
+        }
+        .waterfall-wrapper .item>img{
+            width:100%;
+            vertical-align: top;
+        }
+        .test-wrapper{
+            width:400px;
+            height:400px;
+            margin:25px;
+            background:tan;
+            padding:10px;
+            border:10px solid red;
+            position:relative;
+        }
+        .test-item{
+            margin:42px;
+            width:150px;
+            height:150px;
+            padding:10px;
+            border:10px solid green;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>瀑布流——JS自适应</h1>
+    <div class="test-wrapper" style="">
+        width:400px;height:400px;margin:20px;padding:10px;border:10px;border:10px solid red;
+        <div class="test-item" style="">
+
+        </div>
+    </div>
+
+    <div class="waterfall-wrapper">
+        <div class="item"><img src="../assets/images/1.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/2.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/3.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/4.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/5.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/6.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/7.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/8.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/9.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/10.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/11.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/12.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/13.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/14.jpg" alt=""></div>
+        <div class="item"><img src="../assets/images/15.jpg" alt=""></div>
+    </div>
+</main>
+<script>
+    const $ = s => document.querySelector(s)
+    const $$ = s=> Array.from(document.querySelectorAll(s))
+    class Waterfall{
+        constructor(waterfallWrapper,item) {
+            this.waterfallWrapper = waterfallWrapper
+            this.item = item
+            this.columnCount = waterfallWrapper.width / item.offsetWidth
+        }
+    }
+    new Waterfall($('.waterfall-wrapper'),$('.item'))
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Element Drag</title>
+  <style>
+    .text{
+      width: 200px;
+      height: 200px;
+      background: tan;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .bin{
+      width: 400px;
+      height: 400px;
+      border: 1px solid red;
+    }
+    .img-wrapper{
+      height: 300px;
+    }
+    .img1,.img2{
+      height: 100%;
+    }
+    .img3{
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="test">
+    <div class="text" draggable="true">text</div>
+    <div class="bin"></div>
+    <div class="img-wrapper">
+      <img class="img1" src="//img.tusij.com/ips_templ_preview/2021-05-25/d7/d75bc8cb-5890-4329-b45f-37ce8f36e1ea.jpg!w380?auth_key=1648684800-0-0-9cde705d36a39045c55e81cda39453f7" alt="">
+    </div>
+    <div class="img-wrapper">
+      <img class="img2" src="//img.tusij.com/ips_templ_preview/2020-09-17/6a/6ac8a07c-8b5c-4807-9f5f-493b8051f3f7.jpg!w380?auth_key=1648684800-0-0-8f9a0264b6682ec320e0f3e850e6f658" alt="">
+    </div>
+    <img class="img3" src="//img.tusij.com/ips_templ_preview/2021-05-18/35/35e6389c-fe91-4a69-b547-c1f3e3705f46.jpg!w380?auth_key=1648684800-0-0-ce780131a4a091cc95773cd222b83d7b" alt="">
+  </div>
+</main>
+<script>
+  const $ = (selector) => document.querySelector(selector)
+  const $$ = (selector) =>  Array.from(document.querySelectorAll(selector))
+  let elementDrag = null
+  $('.text').ondragstart = (e) => {
+    console.log(e)
+    console.log('ondragstart')
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text", e.target.innerHTML);
+    e.dataTransfer.setDragImage(e.target, 0, 0);
+    elementDrag = e.target;
+    return true;
+  }
+  $('.text').ondragend = function(e){
+    console.log(e)
+    console.log('ondragend')
+    e.dataTransfer.clearData("text");
+    elementDrag = null;
+    return false
+  }
+  $('.bin').ondragover = function(e){
+    e.preventDefault()
+    return true
+  }
+  $('.bin').ondragenter = function(e){
+    this.style.background = 'red'
+    return true
+  }
+  $('.bin').ondragleave = function(e){
+    this.style.background = 'yellow'
+  }
+  $('.bin').ondrop = function(e){
+    if(elementDrag){
+      elementDrag.parentNode.removeChild(elementDrag);
+    }
+    this.style.background = '#000'
+  }
+</script>
+</body>
+</html>
